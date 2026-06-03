@@ -1,4 +1,4 @@
-name: Playwright Brutal Tests
+ame: Playwright Brutal 3 Pipeline
 
 on:
   push:
@@ -12,12 +12,16 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
-    name: Run ${{ matrix.project }}
+  playwright-tests:
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: playwright-brutal-3
 
     strategy:
       fail-fast: false
+
       matrix:
         project:
           - dummyjson-project
@@ -25,32 +29,32 @@ jobs:
           - chain-project
 
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js 18
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: npm
-          cache-dependency-path: package-lock.json
+          cache-dependency-path: playwright-brutal-3/package-lock.json
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: npm ci
 
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps chromium
+      - name: Install Browsers
+        run: npx playwright install --with-deps
 
-      - name: Run Playwright tests - ${{ matrix.project }}
+      - name: Run Playwright Tests
         run: npx playwright test --project=${{ matrix.project }}
         env:
           CI: true
           BASE_URL: https://dummyjson.com
 
-      - name: Upload Playwright report - ${{ matrix.project }}
+      - name: Upload Playwright Report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: report-${{ matrix.project }}-${{ github.run_number }}
-          path: playwright-report/
+          path: playwright-brutal-3/playwright-report/
           retention-days: 14
