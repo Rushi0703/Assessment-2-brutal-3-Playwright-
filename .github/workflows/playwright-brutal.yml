@@ -1,4 +1,4 @@
-ame: Playwright Brutal 3 Pipeline
+name: Playwright Brutal 3 Pipeline
 
 on:
   push:
