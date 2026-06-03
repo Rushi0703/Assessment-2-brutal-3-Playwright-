@@ -1,0 +1,17 @@
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+.env
+/.env/
+.sonarqube/
+.sonar/
+sonar-project.properties.bak
+coverage/
+*.lcov
+eslint-report.json
+/.log/
+.log
+logs
+.playwright-cli

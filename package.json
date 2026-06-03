@@ -1,0 +1,16 @@
+{
+  "devDependencies": {
+    "@axe-core/playwright": "^4.11.1",
+    "@playwright/test": "^1.60.0",
+    "@types/node": "^24.12.2",
+    "@types/pg": "^8.20.0"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@faker-js/faker": "^9.9.0",
+    "@slack/web-api": "^7.9.3",
+    "dotenv": "^16.5.0",
+    "ini": "^5.0.0",
+    "pg": "^8.20.0"
+  }
+}
